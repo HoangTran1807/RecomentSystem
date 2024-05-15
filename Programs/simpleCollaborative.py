@@ -35,25 +35,25 @@ user_matrix = np.zeros((len(listUser), len(listProduct)))
 for rating in ratings:
     user_matrix[rating[1] - 1][rating[0] - 1] = rating[2]
 
-# Tính giá trị trung bình của mỗi người dùng
-avg_rating = np.zeros(len(listUser))
+# # Tính giá trị trung bình của mỗi người dùng
+# avg_rating = np.zeros(len(listUser))
 
-for i in range(len(listUser)):
-    sum_rating = 0
-    count_rating = 0
-    for j in range(len(listProduct)):
-        if user_matrix[i][j] > 0:
-            sum_rating += user_matrix[i][j]
-            count_rating += 1
-    if count_rating == 0:
-        continue
-    avg_rating[i] = sum_rating / count_rating
+# for i in range(len(listUser)):
+#     sum_rating = 0
+#     count_rating = 0
+#     for j in range(len(listProduct)):
+#         if user_matrix[i][j] > 0:
+#             sum_rating += user_matrix[i][j]
+#             count_rating += 1
+#     if count_rating == 0:
+#         continue
+#     avg_rating[i] = sum_rating / count_rating
 
-# duyệt ma trận user_matrix nếu rating != 0 thì gán giá trị = rating - avg_rating
-for i in range(len(listUser)):
-    for j in range(len(listProduct)):
-        if user_matrix[i][j] > 0:
-            user_matrix[i][j] -= avg_rating[i]
+# # duyệt ma trận user_matrix nếu rating != 0 thì gán giá trị = rating - avg_rating
+# for i in range(len(listUser)):
+#     for j in range(len(listProduct)):
+#         if user_matrix[i][j] > 0:
+#             user_matrix[i][j] -= avg_rating[i]
 
 # Tính độ tương đồng cosine giữa các người dùng
 user_similarity = cosine_similarity(user_matrix)
